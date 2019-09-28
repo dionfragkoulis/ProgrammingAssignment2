@@ -30,25 +30,24 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve function checks if the matrix has been inversed and if not it inverses it.
-## If the matrix has already been inversed, then it retrieves it from the cache and shows it
-## along with a relevant mesage.
+## cacheSolve function checks if the inverse matrix has been alread calcuated and if not it calcualtes the inverse.
+## If the inverse matrix has already been calculated, then it retrieves it from the cache and shows it along with a relevant mesage.
 
 cacheSolve <- function(x, ...) {
 
     ## Get the inversed matrix
     inverseMatrix <- x$getInverseMatrix()
     
-    ## Check if the inversed matrix has already be calcualted.
+    ## Check if the inverse matrix has already been calcualted.
     ## If it has, return a relevant message.
     if(!is.null(inverseMatrix)) {
           message("Getting matrix from cache!")
-    } else { ## If it hasn't, get the matrix, calucate the inversed and set it in the cache for later use.
+    } else { ## If it hasn't, get the matrix, calucate the inverse matrix and set it in the cache for later use.
         matrixData <- x$getMatrix()
         inverseMatrix <- solve(matrixData, ...)
         x$setInverseMatrix(inverseMatrix)
     }
     
-    ## Return the inversed matrix
+    ## Return the inverse matrix
     inverseMatrix
 }
